@@ -18,6 +18,6 @@ and each array has length of 154794, since the used bin size is 20,000 (hg19 ref
 Thus, the loess corrected read count for the chromosome 1 can be obtained as:
 ```python
 import numpy as np
-sample_npy = np.load('/path/to/sample/values.npy')['values']
+sample_npy = np.load('/path/to/sample/values.npz')['values']
 read_count_chr1 = sum(sample_npy[sample_npy['chromosome']==0]['bins_loess'])
 ```
