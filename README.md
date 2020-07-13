@@ -7,11 +7,17 @@ The training is two fold:
 More info in the article. 
 
 Each file is a single comressed numpy array with following dtype in the only 'values' key:
-dtype=[('chromosome', 'i1'), ('bins_loess', '<f2'), ('bins_PCA', '<f2')] and each array has length of 154794, since the used bin size is 20,000 (hg19 reference). The "columns" are:
+```python 
+dtype=[('chromosome', 'i1'), ('bins_loess', '<f2'), ('bins_PCA', '<f2')] 
+```
+and each array has length of 154794, since the used bin size is 20,000 (hg19 reference). The "columns" are:
 1. chromosome - chromosome number (0-based, 22 for X, 23 for Y)
 2. bins_loess - loess normalized bin counts (bin size is 20,000) - used for training of PCA normalization
 2. bins_PCA - loess and subsequently PCA normalized bin counts (bin size is 20,000) - used for training of bin count means
 
-Thus, the loes corrected read count for the chromosome 1 can be obtained as:
-sample_npy = np.load(/sample/path.npy)['values']
+Thus, the loess corrected read count for the chromosome 1 can be obtained as:
+```python
+import numpy as np
+sample_npy = np.load('/path/to/sample/values.npz')['values']
 read_count_chr1 = sum(sample_npy[sample_npy['chromosome']==0]['bins_loess'])
+```
