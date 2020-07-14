@@ -71,7 +71,12 @@ def pca_sample(bins_all, window, components, pca):
     # create bins
     ind = bins_all['chromosome'] < normalize_chrom
     bins = np.array(bins_all['bins_loess'][ind])
-    bins_all['bins_PCA'] = bins_all['bins_loess']
+    # create bins_PCA column
+    if 'bins_PCA' in bins_all.dtype.names:
+        bins_all['bins_PCA'] = bins_all['bins_loess'].astype('float16')
+    else:
+        bins_all = np_recfunctions.append_fields(bins_all, "bins_PCA", bins_all['bins_loess'].astype('float16'), dtypes=['float16'])
+        bins_all = np.array(bins_all)
 
     # normalize to 1.000.000
     norm_coef = sum(bins) / 1000000
