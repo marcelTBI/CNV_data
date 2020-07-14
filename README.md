@@ -50,25 +50,29 @@ More info about the training is in the article.
 
 ## CNV calling
 
-You need to have installed the following packages to run `cnv_caller.py` (tested under python 3.5.2):
+You need to have `Rscript` installed (tested with R version 3.2.3):
+```bash
+sudo apt-get install r-base
+```
+and you also need the `DNAcopy` R package (installation in the R shell):
+```R
+source("http://bioconductor.org/biocLite.R")
+biocLite("DNAcopy")
+```
+
+Furthermore, you need to have installed the following packages to run `cnv_caller.py`:
 ```
 pip install numpy
 pip install pandas
 pip install rpy2
 ```
-
-Furthermore, you need to have `Rscript` installed with the `DNAcopy` R package (tested with R version 3.2.3):
-```
-sudo apt-get install r-base
-source("http://bioconductor.org/biocLite.R")
-biocLite("DNAcopy")
-```
+Python version 3.7 is recommended, 3.6 also works well and for version 3.5 you will need rpy2 package of version 2.8.6 (`pip install rpy2==2.8.6`).
 
 Then you can run the CNV caller with the following:
 ```python 
 python cnv_caller.py -m {trained_means} -b {bins_with_PCA} -o {output_dir} -k -f {fetal_fraction}
 ```
-, where `-m` points to the trained means (.npy), `-b` to the bins with PCA columns created with the `add_pca.py` script, `-o` points to the directory where output should be stored, `-f` specifies the fetal fraction of the sample and `-k` switches on filtering of bins. You can find more options by running `python cnv_caller.py --help`.
+where `-m` points to the trained means (.npy), `-b` to the bins with PCA columns created with the `add_pca.py` script, `-o` points to the directory where output should be stored, `-f` specifies the fetal fraction of the sample and `-k` switches on filtering of bins. You can find more options by running `python cnv_caller.py --help`.
 
 The CNV calling command will create two files in the `{output_dir}` directory:
 1. `{name}_cbs.txt` - cnv calling result - TSV table with columns: 
