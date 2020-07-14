@@ -26,6 +26,7 @@ You need to have installed the following python packages to perform training (te
 pip install numpy
 pip install pandas
 pip install dill
+pip install sklearn
 ```
 
 Use following steps to do the training:
