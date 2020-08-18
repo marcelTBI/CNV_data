@@ -1,6 +1,6 @@
 # CNV_data
 
-Datafiles and scripts for training and running of the CNV caller. The repository contains all of the required data and scripts to perform 
+Datafiles and scripts for training and running of the CNV caller.
 
 ## Data for training of CNV caller
 
