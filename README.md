@@ -96,7 +96,7 @@ An example of first few lines of the cbs file:
 4	     40000	 9032	 180680000	4	-0.0006	 8611	0	green	 0.0002
 ...
 ```
-2. `{name}_gaps.txt` - filtered bins, the format follows a similar patterna as the cbs file, an example of first few lines:
+2. `{name}_gaps.txt` - filtered bins, the format follows a similar pattern as the cbs file, an example of first few lines:
 ```
 chromosome	start	length	end	full_start
 0	0	41	820000	0
